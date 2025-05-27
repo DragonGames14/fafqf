@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <title>Novostori Project | Загрузка</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      font-family: 'Outfit', sans-serif;
+      background: linear-gradient(135deg, #f0f0f3, #d6d0f0);
+      color: #3a2f4a;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 1300px;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-rows: auto auto;
+      gap: 40px;
+      background: rgba(255 255 255 / 0.9);
+      border-radius: 28px;
+      padding: 60px 60px 80px 60px;
+      box-shadow:
+        0 0 50px 6px rgba(58, 47, 74, 0.1),
+        inset 0 0 25px 1px rgba(214, 208, 240, 0.7);
+      backdrop-filter: saturate(180%) blur(18px);
+      animation: fadeInUp 1.4s ease forwards;
+      position: relative;
+      user-select: none;
+      color: #3a2f4a;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(60px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .card {
+      background: linear-gradient(145deg, #f9f9fc, #e6e4f9);
+      border-radius: 24px;
+      border: 1.5px solid #b7addc;
+      box-shadow:
+        inset 0 0 12px #dad7ffcc,
+        0 10px 25px rgba(58, 47, 74, 0.06);
+      color: #4a3f7a;
+      padding: 36px 40px;
+      backdrop-filter: saturate(180%) blur(10px);
+      position: relative;
+    }
+
+    .card h2 {
+      font-size: 28px;
+      margin-bottom: 24px;
+      font-weight: 700;
+      letter-spacing: 1.1px;
+      color: #3a2f4a;
+      text-shadow: 0 0 6px #b5abea;
+    }
+
+    .card p, .card li {
+      font-size: 16px;
+      line-height: 1.55;
+      color: #5c538d;
+      font-weight: 500;
+    }
+
+    .welcome {
+      grid-column: 1 / 2;
+      grid-row: 1 / 3;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background: linear-gradient(120deg, #f9f9fc, #d6d0f0);
+      border-radius: 28px;
+      padding: 48px 48px;
+      box-shadow:
+        inset 0 0 25px #cbc6f9aa;
+      font-size: 18px;
+      line-height: 1.5;
+      color: #3a2f4a;
+    }
+
+    .rules {
+      grid-column: 2 / 4;
+      grid-row: 1 / 2;
+      padding-left: 30px;
+      padding-right: 30px;
+      overflow-y: auto;
+      max-height: 420px;
+    }
+
+    .admins {
+      grid-column: 2 / 3;
+      grid-row: 2 / 3;
+    }
+
+    .tips {
+      grid-column: 3 / 4;
+      grid-row: 2 / 3;
+    }
+
+    .menu {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: linear-gradient(145deg, #f9f9fc, #e6e4f9);
+      border-radius: 24px;
+      border: 1.5px solid #b7addc;
+      box-shadow:
+        inset 0 0 12px #dad7ffcc,
+        0 10px 25px rgba(58, 47, 74, 0.06);
+      padding: 28px 36px;
+      width: 260px;
+      color: #4a3f7a;
+      font-weight: 600;
+      font-size: 16px;
+      backdrop-filter: saturate(180%) blur(10px);
+      user-select: none;
+      z-index: 1000;
+    }
+
+    .menu h2 {
+      margin-bottom: 20px;
+      font-weight: 700;
+      font-size: 22px;
+      color: #3a2f4a;
+      text-shadow: 0 0 6px #b5abea;
+    }
+
+    .menu ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .menu li {
+      margin-bottom: 14px;
+      padding-left: 10px;
+      position: relative;
+      cursor: default;
+      user-select: none;
+      color: #5c538d;
+      transition: color 0.2s ease;
+    }
+
+    .menu li::before {
+      content: '>';
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: #a798e8;
+      font-weight: 700;
+    }
+
+    .menu li:last-child {
+      margin-bottom: 0;
+    }
+
+    .rules::-webkit-scrollbar {
+      width: 8px;
+    }
+    .rules::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    .rules::-webkit-scrollbar-thumb {
+      background: #a798e8cc;
+      border-radius: 10px;
+    }
+
+    @media (max-width: 1024px) {
+      .container {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto auto auto;
+        padding: 40px 40px 60px 40px;
+      }
+
+      .welcome {
+        grid-column: 1 / 3;
+        grid-row: 1 / 2;
+      }
+
+      .rules {
+        grid-column: 1 / 2;
+        grid-row: 2 / 3;
+        max-height: 300px;
+      }
+
+      .admins {
+        grid-column: 2 / 3;
+        grid-row: 2 / 3;
+      }
+
+      .tips {
+        grid-column: 1 / 3;
+        grid-row: 3 / 4;
+      }
+      
+      .menu {
+        position: static;
+        width: 100%;
+        margin-top: 30px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        display: flex;
+        flex-direction: column;
+        padding: 30px 20px 40px 20px;
+        max-width: 100%;
+      }
+
+      .welcome,
+      .rules,
+      .admins,
+      .tips {
+        grid-column: unset !important;
+        grid-row: unset !important;
+        max-height: unset !important;
+        margin-bottom: 30px;
+      }
+
+      .menu {
+        position: static;
+        width: 100%;
+        margin-top: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="card welcome">
+      <h2>Novostori Project</h2>
+      <p>Добро пожаловать! Подключаемся к серверу... Настройся на волну железных дорог!</p>
+    </div>
+
+    <div class="card rules">
+      <h2>Правила сервера</h2>
+      <ul>
+        <li>Не мешай другим игрокам</li>
+        <li>Спавн поездов — только в разрешённых местах</li>
+        <li>Уважай диспетчеров и администрацию</li>
+        <li>Играем адекватно и без нарушений</li>
+        <li>Следи за чатом и соблюдай RP</li>
+      </ul>
+    </div>
+
+    <div class="card admins">
+      <h2>Команда сервера</h2>
+      <ul>
+        <li>👑 <strong>OWN:</strong> KENZO</li>
+        <li>⚙️ <strong>DEV:</strong> DragonGames</li>
+        <li>🛡 <strong>Админы:</strong> идет набор</li>
+        <li>💬 <strong>Модераторы:</strong> идет набор</li>
+      </ul>
+    </div>
+
+    <div class="card tips">
+      <h2>Советы новичкам</h2>
+      <ul>
+        <li>Используй TAB, чтобы посмотреть игроков</li>
+        <li>Слушай диспетчера — он направляет движение</li>
+        <li>Прочитай правила — это важно</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="menu">
+    <h2>Меню</h2>
+    <ul>
+      <li>/menu — Главное меню</li>
+      <li>/rules — Правила сервера</li>
+      <li>/admins — Команда сервера</li>
+      <li>/tips — Советы новичкам</li>
+    </ul>
+  </div>
+</body>
+</html>
